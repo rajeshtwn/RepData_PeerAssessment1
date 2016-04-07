@@ -5,15 +5,25 @@ output:
     keep_md: true
 ---
 
+```{r}
+# Library imports
+library(ggplot2)
+```
 
 ## Loading and preprocessing the data
 
-	# Load and process data
-	activity<-read.csv("activity.csv",colClasses=c("integer","Date","integer"))
+```{r}
+# Load and process data
+filename <- "activity.csv"
+data <- read.csv(filename, colClasses=c("integer","Date","integer"))
+```
 
 ## What is mean total number of steps taken per day?
-
-
+```{r}
+meanstepsperday<-ddply(activity, "date", summarise,
+                   meansteps=mean(steps,na.rm=TRUE)
+)
+```
 
 ## What is the average daily activity pattern?
 
